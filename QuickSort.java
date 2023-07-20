@@ -1,77 +1,58 @@
 package geradorRelatoriosBase;
 
-public class QuickSort implements AlgoritmoOrdenacao{
-	
-	private int particiona(int ini, int fim, Produto[] produtos, String criterio){
+public class QuickSort implements AlgoritmoOrdenacao {
 
+	private CriterioComparacao criterio;
+
+	public QuickSort(String criterio) {
+		super();
+		if (criterio == CRIT_DESC_CRESC) {
+			this.criterio = new CriterioDesc();
+		} else if (criterio == CRIT_PRECO_CRESC) {
+			this.criterio = new CriterioPreco();
+		} else if (criterio == CRIT_ESTOQUE_CRESC) {
+			this.criterio = new CriterioEstoque();
+		}
+	}
+
+	private int particiona(int ini, int fim, Produto[] produtos) {
 		Produto x = produtos[ini];
 		int i = (ini - 1);
 		int j = (fim + 1);
 
-		while(true){
+		while (true) {
 
-			if(criterio.equals(CRIT_DESC_CRESC)){
+			do {
+				j--;
 
-				do{
-					j--;
+			} while (!(criterio.comparar(produtos[j], x)));
 
-				} while(produtos[j].getDescricao().compareToIgnoreCase(x.getDescricao()) > 0);
-			
-				do{
-					i++;
+			do {
+				i++;
 
-				} while(produtos[i].getDescricao().compareToIgnoreCase(x.getDescricao()) < 0);
-			}
-			else if(criterio.equals(CRIT_PRECO_CRESC)){
+			} while (criterio.comparar(produtos[i], x));
 
-				do{ 
-					j--;
-
-				} while(produtos[j].getPreco() > x.getPreco());
-			
-				do{
-					i++;
-
-				} while(produtos[i].getPreco() < x.getPreco());
-			}
-
-			else if(criterio.equals(CRIT_ESTOQUE_CRESC)){
-
-				do{ 
-					j--;
-
-				} while(produtos[j].getQtdEstoque() > x.getQtdEstoque());
-			
-				do{
-					i++;
-
-				} while(produtos[i].getQtdEstoque() < x.getQtdEstoque());
-
-			}
-			else{
-
-				throw new RuntimeException("Criterio invalido!");
-			}
-
-			if(i < j){
+			if (i < j) {
 				Produto temp = produtos[i];
-				produtos[i] = produtos[j]; 				
+				produtos[i] = produtos[j];
 				produtos[j] = temp;
+			} else {
+				return j;
 			}
-			else return j;
+
 		}
 	}
 
 	@Override
-	public Produto[] ordenar(int ini, int fim, Produto[] produtos, String criterio) {
-		
-		if(ini < fim) {
+	public Produto[] ordenar(int ini, int fim, Produto[] produtos) {
 
-			int q = particiona(ini, fim, produtos, criterio);
-			
-			ordenar(ini, q, produtos, criterio);
-			ordenar(q + 1, fim, produtos, criterio);
-		
+		if (ini < fim) {
+
+			int q = particiona(ini, fim, produtos);
+
+			ordenar(ini, q, produtos);
+			ordenar(q + 1, fim, produtos);
+
 		}
 		return produtos;
 	}

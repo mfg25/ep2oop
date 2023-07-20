@@ -8,16 +8,15 @@ public class ContextoOrdenacao {
 	private int ini;
 	private int fim;
 	private Produto[] produtos;
-	private String criterio;
+
 	
 	public ContextoOrdenacao(String algoritmo, int ini, int fim, Produto[] produtos, String criterio) {
 		super();
-		if(algoritmo == ALG_QUICKSORT) this.algoritmo = new QuickSort();
-		else if(algoritmo == ALG_INSERTIONSORT) this.algoritmo = new InsertionSort();
+		if(algoritmo.equals(ALG_QUICKSORT)) this.algoritmo = new QuickSort(criterio);
+		else if(algoritmo == ALG_INSERTIONSORT) this.algoritmo = new InsertionSort(criterio);
 		this.ini = ini;
 		this.fim = fim;
 		this.produtos = produtos;
-		this.criterio = criterio;
 	}
 
 	public void setAlgoritmo(AlgoritmoOrdenacao algoritmo) {
@@ -25,7 +24,7 @@ public class ContextoOrdenacao {
     }
 	
 	public Produto[] executarOrdenacao() {
-		Produto[] vetorProdutos = algoritmo.ordenar(ini, fim, produtos, criterio);
+		Produto[] vetorProdutos = algoritmo.ordenar(ini, fim, produtos);
         return vetorProdutos;
     }
 }
