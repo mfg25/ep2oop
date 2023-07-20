@@ -2,12 +2,19 @@ package geradorRelatoriosBase;
 
 public class InsertionSort implements AlgoritmoOrdenacao{
 	
+	private CriterioComparacao criterio;
+	
+	public InsertionSort(CriterioComparacao criterio) {
+		super();
+		this.criterio = criterio;
+	}
+
 	@Override
 	public Produto[] ordenar(int ini, int fim, Produto[] produtos, String criterio) {
 		
 		for(int i = ini; i <= fim; i++){
 
-			Produto x = produtos[i];				
+			Produto x = produtos[i];
 			int j = (i - 1);
 
 			while(j >= ini){
@@ -33,7 +40,6 @@ public class InsertionSort implements AlgoritmoOrdenacao{
 				else if(criterio.equals(CRIT_ESTOQUE_CRESC)){
 
 					if(x.getQtdEstoque() < produtos[j].getQtdEstoque()){
-		
 						produtos[j + 1] = produtos[j];
 						j--;
 					}
