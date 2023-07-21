@@ -25,12 +25,13 @@ public class GeradorDeRelatorios {
 	public static final int FORMATO_ITALICO = 0b0010;
 
 	private Produto [] produtos;
-	private CriterioComparacao estrategiaFiltragem;
+	private FiltroComparacao estrategiaFiltragem;
 	private String algoritmo;
 	private String criterio;
 	private String filtro;
 	private String argFiltro;
-	private int format_flags;	
+	private int format_flags;
+	
 
 	public GeradorDeRelatorios(Produto [] produtos, String algoritmo, String criterio, String filtro, String argFiltro, int format_flags){
 		this.produtos = new Produto[produtos.length];
@@ -40,7 +41,7 @@ public class GeradorDeRelatorios {
 		this.algoritmo = algoritmo;
 		this.criterio = criterio;
 		this.format_flags = format_flags;
-		this.filtro = filtro;
+		this.estrategiaFiltragem = SelecionarEstrategiaFiltro.criarEstrategia(filtro, argFiltro);
 		this.argFiltro = argFiltro;
 	}
 
@@ -75,24 +76,8 @@ public class GeradorDeRelatorios {
 		for(int i = 0; i < produtosOrdenados.length; i++){
 
 			Produto p = produtosOrdenados[i];
-			boolean selecionado = false;
 
-			if(filtro.equals(FILTRO_TODOS)){
-				selecionado = true;
-			}
-			else if(filtro.equals(FILTRO_ESTOQUE_MENOR_OU_IQUAL_A)){
-
-				if(p.getQtdEstoque() <= Integer.parseInt(argFiltro)) selecionado = true;	
-			}
-			else if(filtro.equals(FILTRO_CATEGORIA_IGUAL_A)){
-
-				if(p.getCategoria().equalsIgnoreCase(argFiltro)) selecionado = true;
-			}
-			else{
-				throw new RuntimeException("Filtro invalido!");			
-			}
-
-			if(selecionado){
+			if(estrategiaFiltragem.filtrar(p)){
 
 				out.print("<li>");
 
