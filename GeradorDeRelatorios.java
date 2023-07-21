@@ -26,9 +26,9 @@ public class GeradorDeRelatorios {
 
 	private Produto [] produtos;
 	private FiltroComparacao estrategiaFiltragem;
+	private EstrategiaFormatacao estrategiaFormatacao;
 	private String algoritmo;
 	private String criterio;
-	private String filtro;
 	private String argFiltro;
 	private int format_flags;
 	
@@ -42,6 +42,7 @@ public class GeradorDeRelatorios {
 		this.criterio = criterio;
 		this.format_flags = format_flags;
 		this.estrategiaFiltragem = SelecionarEstrategiaFiltro.criarEstrategia(filtro, argFiltro);
+		this.estrategiaFormatacao = SelecionarEstrategiaFormatacao.criarEstrategia(format_flags);
 		this.argFiltro = argFiltro;
 	}
 
@@ -81,28 +82,9 @@ public class GeradorDeRelatorios {
 
 				out.print("<li>");
 
-				if((format_flags & FORMATO_ITALICO) > 0){
-
-					out.print("<span style=\"font-style:italic\">");
-				}
-
-				if((format_flags & FORMATO_NEGRITO) > 0){
-
-					out.print("<span style=\"font-weight:bold\">");
-				} 
-			
-				out.print(p.formataParaImpressao());
-
-				if((format_flags & FORMATO_NEGRITO) > 0){
-
-					out.print("</span>");
-				} 
-
-				if((format_flags & FORMATO_ITALICO) > 0){
-
-					out.print("</span>");
-				}
-
+				String textoFormatado = estrategiaFormatacao.aplicarFormatacao(p.formataParaImpressao());
+				out.print(textoFormatado);
+				
 				out.println("</li>");
 				count++;
 			}
