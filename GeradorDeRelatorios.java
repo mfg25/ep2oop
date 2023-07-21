@@ -25,6 +25,7 @@ public class GeradorDeRelatorios {
 	public static final int FORMATO_ITALICO = 0b0010;
 
 	private Produto [] produtos;
+	private CriterioComparacao estrategiaFiltragem;
 	private String algoritmo;
 	private String criterio;
 	private String filtro;
@@ -32,14 +33,10 @@ public class GeradorDeRelatorios {
 	private int format_flags;	
 
 	public GeradorDeRelatorios(Produto [] produtos, String algoritmo, String criterio, String filtro, String argFiltro, int format_flags){
-
 		this.produtos = new Produto[produtos.length];
-		
 		for(int i = 0; i < produtos.length; i++){
-		
 			this.produtos[i] = produtos[i];
 		}
-
 		this.algoritmo = algoritmo;
 		this.criterio = criterio;
 		this.format_flags = format_flags;
@@ -54,7 +51,6 @@ public class GeradorDeRelatorios {
 	
 	
 	public void debug(){
- 
 		System.out.println("Gerando relatório para array contendo " + produtos.length + " produto(s)");
 		System.out.println("parametro filtro = '" + argFiltro + "'"); 
 	}
@@ -82,7 +78,6 @@ public class GeradorDeRelatorios {
 			boolean selecionado = false;
 
 			if(filtro.equals(FILTRO_TODOS)){
-
 				selecionado = true;
 			}
 			else if(filtro.equals(FILTRO_ESTOQUE_MENOR_OU_IQUAL_A)){

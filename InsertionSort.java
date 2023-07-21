@@ -3,17 +3,9 @@ package geradorRelatoriosBase;
 public class InsertionSort implements AlgoritmoOrdenacao{
 	
 	private CriterioComparacao criterio;
-	
+		
 	public InsertionSort(String criterio) {
-		super();
-		if(criterio == CRIT_DESC_CRESC) {
-			this.criterio = new CriterioDesc();
-		}else if(criterio == CRIT_PRECO_CRESC) {
-			this.criterio = new CriterioPreco();
-		}
-		else if(criterio == CRIT_ESTOQUE_CRESC) {
-			this.criterio = new CriterioEstoque();
-		}
+		this.criterio = SelecionarEstrategiaCriterio.criarEstrategia(criterio);
 	}
 
 	@Override

@@ -5,14 +5,7 @@ public class QuickSort implements AlgoritmoOrdenacao {
 	private CriterioComparacao criterio;
 
 	public QuickSort(String criterio) {
-		super();
-		if (criterio == CRIT_DESC_CRESC) {
-			this.criterio = new CriterioDesc();
-		} else if (criterio == CRIT_PRECO_CRESC) {
-			this.criterio = new CriterioPreco();
-		} else if (criterio == CRIT_ESTOQUE_CRESC) {
-			this.criterio = new CriterioEstoque();
-		}
+		this.criterio = SelecionarEstrategiaCriterio.criarEstrategia(criterio);
 	}
 
 	private int particiona(int ini, int fim, Produto[] produtos) {
@@ -40,7 +33,7 @@ public class QuickSort implements AlgoritmoOrdenacao {
 				return j;
 			}
 
-		}
+		}	
 	}
 
 	@Override

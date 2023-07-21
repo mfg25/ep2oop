@@ -13,10 +13,12 @@ public class ContextoOrdenacao {
 	public ContextoOrdenacao(String algoritmo, int ini, int fim, Produto[] produtos, String criterio) {
 		super();
 		if(algoritmo.equals(ALG_QUICKSORT)) this.algoritmo = new QuickSort(criterio);
-		else if(algoritmo == ALG_INSERTIONSORT) this.algoritmo = new InsertionSort(criterio);
+		else if(algoritmo.equals(ALG_INSERTIONSORT)) this.algoritmo = new InsertionSort(criterio);
 		this.ini = ini;
 		this.fim = fim;
-		this.produtos = produtos;
+		for(int i = 0; i < produtos.length; i++){
+			this.produtos[i] = produtos[i];
+		}
 	}
 
 	public void setAlgoritmo(AlgoritmoOrdenacao algoritmo) {
