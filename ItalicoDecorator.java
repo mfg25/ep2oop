@@ -1,6 +1,6 @@
 package geradorRelatoriosBase;
 
-public class ItalicoDecorator extends ProdutoFormatadoPadrao{
+public class ItalicoDecorator extends ProdutoDecorator{
 
 	public ItalicoDecorator(Produto produto) {
 		super(produto);
@@ -9,6 +9,50 @@ public class ItalicoDecorator extends ProdutoFormatadoPadrao{
 	@Override
 	public String formataParaImpressao() {
 	    return "<i>" + super.formataParaImpressao() + "</i>";
+	}
+	
+	//////////////////////////////////////////////////////////////
+
+	@Override
+	public void setQtdEstoque(int qtdEstoque) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPreco(double preco) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getDescricao() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getCategoria() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getQtdEstoque() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getPreco() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

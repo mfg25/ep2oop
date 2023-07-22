@@ -13,5 +13,4 @@ public interface Produto {
 
 	public String formataParaImpressao();
     
-
 }

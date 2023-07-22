@@ -29,7 +29,6 @@ public class GeradorDeRelatorios {
 
 	private List<Produto> produtos;
 	private FiltroComparacao estrategiaFiltragem;
-	private EstrategiaFormatacao estrategiaFormatacao;
 	private String algoritmo;
 	private String criterio;
 	private String argFiltro;
