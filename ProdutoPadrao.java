@@ -83,4 +83,6 @@ public class ProdutoPadrao implements Produto {
 		return getDescricao() + SEPARADOR + getCategoria() + SEPARADOR + fmt.format(getPreco()) + SEPARADOR + getQtdEstoque() + " unidade(s) em estoque";
 	}
 
+	
+
 }

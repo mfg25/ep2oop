@@ -1,5 +1,7 @@
 package geradorRelatoriosBase;
 
+import java.util.List;
+
 public class InsertionSort implements AlgoritmoOrdenacao{
 	
 	private CriterioComparacao criterio;

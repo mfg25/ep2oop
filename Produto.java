@@ -12,4 +12,6 @@ public interface Produto {
 	public double getPreco();
 
 	public String formataParaImpressao();
+    
+
 }
