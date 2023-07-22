@@ -34,8 +34,6 @@ public class GeradorDeRelatorios {
 	private String argFiltro;
 	private int format_flags;
 	
-	
-
 	public GeradorDeRelatorios(List<Produto> produtos, String algoritmo, String criterio, String filtro, String argFiltro, int format_flags){
 		this.produtos = produtos;
 		this.algoritmo = algoritmo;
@@ -78,12 +76,11 @@ public class GeradorDeRelatorios {
 
 			Produto p = produtosOrdenados.get(i);
 			
-			ProdutoFormatadoPadrao produtoFormatado = new ProdutoFormatadoPadrao(p);
-
 			if(estrategiaFiltragem.filtrar(p)){
-
 				out.print("<li>");
 				
+				p.formataParaImpressao();
+				System.out.println(p.formataParaImpressao());
 				out.println("</li>");
 				count++;
 			}
@@ -117,7 +114,7 @@ public class GeradorDeRelatorios {
                 boolean negrito = Boolean.parseBoolean(campos[6]);
                 String cor = campos[7];
 
-                ProdutoAlterado produto = new ProdutoAlterado(id, descricao, categoria, qtdEstoque, preco, italico, negrito, cor);
+                ProdutoFormatado produto = new ProdutoFormatado(id, descricao, categoria, qtdEstoque, preco, italico, negrito, cor);
                 produtos.add(produto);
         	}
         	
