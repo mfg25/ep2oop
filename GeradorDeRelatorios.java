@@ -8,6 +8,10 @@ import java.io.IOException;
 
 import java.util.*;
 
+import geradorRelatoriosBase.Filtro.FiltroComparacao;
+import geradorRelatoriosBase.Filtro.SelecionarEstrategiaFiltro;
+import geradorRelatoriosBase.Ordenacao.ContextoOrdenacao;
+
 public class GeradorDeRelatorios {
 
 	public static final String ALG_INSERTIONSORT = "quick";
@@ -59,7 +63,6 @@ public class GeradorDeRelatorios {
 
 		debug();
 
-		System.out.println(this.produtos);
 		List<Produto> produtosOrdenados = ordena(0, this.produtos.size() - 1);
 
 		PrintWriter out = new PrintWriter(arquivoSaida);
@@ -79,8 +82,9 @@ public class GeradorDeRelatorios {
 			if(estrategiaFiltragem.filtrar(p)){
 				out.print("<li>");
 				
-				p.formataParaImpressao();
-				System.out.println(p.formataParaImpressao());
+				String produtoFormatado = p.formataParaImpressao();
+				out.print(produtoFormatado);
+				
 				out.println("</li>");
 				count++;
 			}

@@ -1,4 +1,4 @@
-package geradorRelatoriosBase;
+package geradorRelatoriosBase.Filtro;
 
 public class SelecionarEstrategiaFiltro {
 	public static FiltroComparacao criarEstrategia(String filtro, String argFiltro) {

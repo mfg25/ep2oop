@@ -1,4 +1,6 @@
-package geradorRelatoriosBase;
+package geradorRelatoriosBase.Filtro;
+
+import geradorRelatoriosBase.Produto;
 
 public class FiltroTodos implements FiltroComparacao{
 	

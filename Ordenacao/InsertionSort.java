@@ -1,6 +1,10 @@
-package geradorRelatoriosBase;
+package geradorRelatoriosBase.Ordenacao;
 
 import java.util.List;
+
+import geradorRelatoriosBase.Produto;
+import geradorRelatoriosBase.Ordenacao.Criterio.CriterioComparacao;
+import geradorRelatoriosBase.Ordenacao.Criterio.SelecionarEstrategiaCriterio;
 
 public class InsertionSort implements AlgoritmoOrdenacao{
 	

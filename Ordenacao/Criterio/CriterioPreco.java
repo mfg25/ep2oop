@@ -1,4 +1,6 @@
-package geradorRelatoriosBase;
+package geradorRelatoriosBase.Ordenacao.Criterio;
+
+import geradorRelatoriosBase.Produto;
 
 public class CriterioPreco implements CriterioComparacao{
 

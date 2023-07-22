@@ -1,6 +1,8 @@
-package geradorRelatoriosBase;
+package geradorRelatoriosBase.Ordenacao;
 
 import java.util.List;
+
+import geradorRelatoriosBase.Produto;
 
 public class ContextoOrdenacao {
 	public static final String ALG_INSERTIONSORT = "quick";
@@ -9,8 +11,6 @@ public class ContextoOrdenacao {
 	private AlgoritmoOrdenacao algoritmo;
 	private int ini;
 	private int fim;
-	//C�digo antigo para caso de algum erro
-	//private Produto[] produtos;
 	private List<Produto> produtos;
 	
 	public ContextoOrdenacao(String algoritmo, int ini, int fim, List<Produto> produtos, String criterio) {
