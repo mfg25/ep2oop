@@ -9,25 +9,22 @@ public class InsertionSort implements AlgoritmoOrdenacao{
 	}
 
 	@Override
-	public Produto[] ordenar(int ini, int fim, Produto[] produtos) {
-		
-		for(int i = ini; i <= fim; i++){
-			
-			Produto x = produtos[i];
+	public List<Produto> ordenar(int ini, int fim, List<Produto> produtos) {
+	    for (int i = ini; i <= fim; i++) {
+	        Produto x = produtos.get(i);
 
-			int j = (i - 1);
+	        int j = i - 1;
 
-			while(j >= ini){
-				if(criterio.comparar(produtos[i], produtos[j])) {
-					produtos[j + 1] = produtos[j];
-					j--;
-				}
-			}
-			produtos[j + 1] = x;
-		}
-		
-		return produtos;
-		
+	        while (j >= ini && criterio.comparar(x, produtos.get(j))) {
+	            produtos.set(j + 1, produtos.get(j));
+	            j--;
+	        }
+
+	        produtos.set(j + 1, x);
+	    }
+
+	    return produtos;
 	}
+
 
 }
